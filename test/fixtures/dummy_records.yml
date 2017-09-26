@@ -1,0 +1,4 @@
+one:
+  name: one
+  content: content
+  is_true: true

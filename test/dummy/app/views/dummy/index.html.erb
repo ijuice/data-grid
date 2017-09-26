@@ -1,0 +1,11 @@
+<%=
+  @grid.display(self) do |g|
+    g.column(name: 'Name', attribute: 'name') do |dummy|
+      dummy.name
+    end
+
+    g.column(name: 'Content', attribute: 'content') do |dummy|
+      dummy.content
+    end
+  end
+%>

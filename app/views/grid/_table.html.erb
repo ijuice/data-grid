@@ -1,0 +1,27 @@
+<table class="clearfix tablesorter wice-grid">
+  <thead>
+  <tr class="wice-grid-title-row">
+    <%
+      headers.each do |h| %>
+        <th <%h[:html].each do |key, option| %>
+          <%= "#{key}=#{option}" %>
+        <% end %>
+        >
+          <%= h[:text] %>
+        </th>
+    <% end %>
+  </tr>
+  </thead>
+  <tbody>
+  <% content.each do |r| %>
+      <tr>
+        <% r.each do |c| %>
+            <td>
+              <%= c %>
+            </td>
+        <% end %>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= grid.pagination %>
