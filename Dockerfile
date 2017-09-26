@@ -5,6 +5,7 @@ RUN mkdir /myapp
 WORKDIR /myapp
 ADD Gemfile /myapp/Gemfile
 ADD Gemfile.lock /myapp/Gemfile.lock
-ADD grid.gemspec /myapp/grid.gemspec
+ADD data_grid.gemspec /myapp/data_grid.gemspec
+ADD lib/data_grid/version.rb /myapp/lib/data_grid/version.rb
 RUN bundle install
 ADD . /myapp

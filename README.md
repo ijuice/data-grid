@@ -1,4 +1,4 @@
-# Grid
+# DataGrid
 Short description and motivation.
 
 ## Usage

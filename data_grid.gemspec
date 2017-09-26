@@ -1,12 +1,12 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
-require "grid/version"
+require "data_grid/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "grid"
-  s.version     = Grid::VERSION
+  s.name        = "data-grid"
+  s.version     = DataGrid::VERSION
   s.authors     = [""]
   s.email       = [""]
   s.homepage    = "http://ijuice.de"

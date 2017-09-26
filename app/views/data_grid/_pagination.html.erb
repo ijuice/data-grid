@@ -3,7 +3,7 @@
     <ul class="pagination">
       <% if page > 0 %>
           <li>
-            <%= grid.pagination_page_link_to('<', page - 1) %>
+            <%= data_grid.pagination_page_link_to('<', page - 1) %>
           </li>
       <% end %>
 
@@ -16,7 +16,7 @@
               </li>
           <% end %>
           <li <%= i == page ? 'class=active' : '' %>>
-            <%= grid.pagination_page_link_to(i+1, i) %>
+            <%= data_grid.pagination_page_link_to(i+1, i) %>
           </li>
           <% if i == page+pages_around && i < page_last - pages_around+1 %>
               <li>
@@ -26,12 +26,12 @@
       <% end %>
       <% if page < page_last %>
           <li>
-            <%= grid.pagination_page_link_to('>', page + 1) %>
+            <%= data_grid.pagination_page_link_to('>', page + 1) %>
           </li>
       <% end %>
     </ul>
   </div>
   <div class="pagination_status">
-    <%= grid.entries_start %> - <%= grid.entries_end %> / <%= grid.entries_total %>
+    <%= data_grid.entries_start %> - <%= data_grid.entries_end %> / <%= data_grid.entries_total %>
   </div>
 </div>

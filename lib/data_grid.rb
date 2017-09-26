@@ -1,7 +1,7 @@
-require "grid/engine"
+require "data_grid/engine"
 
-module Grid
-  class DataGrid
+module DataGrid
+  class Base
     attr_reader :context
 
     def initialize(records, options)
@@ -42,7 +42,8 @@ module Grid
       @output << pagination
 
       view = ActionView::Base.new ActionController::Base.view_paths, {}
-      view.render partial: 'grid/table.html.erb', locals: { headers: @headers, content: @content, grid: self, pages_around: @pages_around }
+      view.render partial: 'data_grid/table.html.erb',
+                  locals: { headers: @headers, content: @content, data_grid: self, pages_around: @pages_around }
     end
 
     def column(options, &content)
@@ -56,7 +57,7 @@ module Grid
           css = @order_dir.downcase if @order_by == options[:attribute]
           order_dir = @grid_params[:order_by] == options[:attribute] && @grid_params[:order_dir] == 'ASC' ? 'DESC' : 'ASC'
           header[:text] = @context.link_to(options[:name], @context.request.query_parameters.merge(
-              { @name.to_sym => params({ order_by: options[:attribute], order_dir: order_dir }) }
+            { @name.to_sym => params({ order_by: options[:attribute], order_dir: order_dir }) }
           ), class: css)
         end
         @headers << header
@@ -71,7 +72,7 @@ module Grid
       pages_total = (@all_records.except(:select).except(:group).count.to_f / @per_page).ceil
       page_last = pages_total - 1
       view = ActionView::Base.new ActionController::Base.view_paths, {}
-      view.render partial: 'grid/pagination.html.erb', locals: { page_last: page_last, page: @page, grid: self, pages_around: @pages_around }
+      view.render partial: 'data_grid/pagination.html.erb', locals: { page_last: page_last, page: @page, data_grid: self, pages_around: @pages_around }
     end
 
     def entries_start
