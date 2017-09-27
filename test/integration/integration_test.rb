@@ -2,7 +2,7 @@ require 'test_helper'
 
 class GridIntegrationTest < ActionDispatch::IntegrationTest
   def assert_table_present
-    assert_select 'table.wice-grid', 1
+    assert_select 'table.data-grid', 1
     assert_select 'th', 'Id'
     assert_select 'th', 'Name'
     assert_select 'th', 'Content'
