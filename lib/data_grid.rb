@@ -71,7 +71,7 @@ module DataGrid
     end
 
     def pagination
-      pages_total = (@all_records.length.to_f / @per_page).ceil
+      pages_total = (entries_total.to_f / @per_page).ceil
       view = ActionView::Base.new ActionController::Base.view_paths, {}
       view.render partial: 'data_grid/pagination.html.erb', locals: { page_last: pages_total, page: @page, data_grid: self, pages_around: @pages_around }
     end
