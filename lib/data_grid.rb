@@ -8,12 +8,14 @@ module DataGrid
       @records = records
       @all_records = records
       @name = 'grid'
-      @name = options[:name] + '_grid' if !options[:name].nil?
+      @name = options[:name] if !options[:name].nil?
       @pages_around = 2
       @pages_around = options[:pagination_pages_around] if !options[:pagination_pages_around].nil?
+      @per_page = 25
+      @per_page = options[:per_page] if !options[:per_page].nil?
+
       initialize_params options
 
-      @per_page = options[:per_page]
       @page = @grid_params[:page]
       @order_by = @grid_params[:order_by]
       @order_dir = @grid_params[:order_dir]

@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = DataGrid::VERSION
   s.authors     = [""]
   s.email       = [""]
-  s.homepage    = "http://ijuice.de"
+  s.homepage    = "https://github.com/ijuice/data-grid"
   s.summary     = "Displays Data"
   s.description = "Displays Data in ActiveRecords as Table"
   s.license     = "MIT"
