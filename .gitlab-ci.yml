@@ -1,0 +1,37 @@
+image: docker:latest
+variables:
+    DOCKER_DRIVER: overlay
+
+stages:
+  - test
+  - deploy
+
+test:
+  stage: test
+  before_script:
+    - docker info
+  after_script:
+    - docker-compose down
+    - sudo chown -R gitlab-runner:gitlab-runner .
+  script:
+    - docker-compose up -d
+    - docker-compose exec -T web rails test
+  except:
+    - schedules
+
+deploy_github:
+  stage: deploy
+  script:
+    - |
+      eval `ssh-agent -s`
+      ssh-add <(echo "$SSH_KEY_MOWGLI" | base64 --decode)
+      git remote add github git@github.com:ijuice/data-grid.git
+      git checkout master
+      git push github master --tags
+  environment:
+    name: github
+    url: https://github.com/ijuice/data-grid
+  except:
+    - schedules
+  only:
+    - tags
