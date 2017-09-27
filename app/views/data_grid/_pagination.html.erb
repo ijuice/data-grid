@@ -1,14 +1,14 @@
 <div class="wice-grid">
   <div class="pagination">
     <ul class="pagination">
-      <% if page > 0 %>
+      <% if page > 1 %>
           <li>
             <%= data_grid.pagination_page_link_to('<', page - 1) %>
           </li>
       <% end %>
 
-      <% [(0..pages_around-1).to_a, (page-pages_around..page+pages_around).to_a, (page_last-pages_around+1..page_last).to_a].flatten!.sort!.uniq.each do |i|
-        next if i < 0 || i > page_last
+      <% [(1..pages_around).to_a, (page-pages_around..page+pages_around).to_a, (page_last-pages_around+1..page_last).to_a].flatten!.sort!.uniq.each do |i|
+        next if i < 1 || i > page_last
       %>
           <% if i == page-pages_around && i > pages_around+1 %>
               <li>
@@ -16,7 +16,7 @@
               </li>
           <% end %>
           <li <%= i == page ? 'class=active' : '' %>>
-            <%= data_grid.pagination_page_link_to(i+1, i) %>
+            <%= data_grid.pagination_page_link_to(i, i) %>
           </li>
           <% if i == page+pages_around && i < page_last - pages_around+1 %>
               <li>

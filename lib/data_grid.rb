@@ -17,7 +17,7 @@ module DataGrid
       @page = @grid_params[:page]
       @order_by = @grid_params[:order_by]
       @order_dir = @grid_params[:order_dir]
-      @offset = @page * @per_page
+      @offset = (@page - 1) * @per_page
 
       @records = @records.limit(@per_page).offset(@offset)
       @records = @records.order("#{@order_by} #{@order_dir}") if !@order_by.nil?
@@ -70,9 +70,8 @@ module DataGrid
 
     def pagination
       pages_total = (@all_records.except(:select).except(:group).count.to_f / @per_page).ceil
-      page_last = pages_total - 1
       view = ActionView::Base.new ActionController::Base.view_paths, {}
-      view.render partial: 'data_grid/pagination.html.erb', locals: { page_last: page_last, page: @page, data_grid: self, pages_around: @pages_around }
+      view.render partial: 'data_grid/pagination.html.erb', locals: { page_last: pages_total, page: @page, data_grid: self, pages_around: @pages_around }
     end
 
     def entries_start
@@ -96,7 +95,7 @@ module DataGrid
     def initialize_params(options)
       @grid_params = options[:params][@name.to_sym]
       @grid_params = {} if @grid_params.nil?
-      @grid_params[:page] = 0 if @grid_params[:page].nil?
+      @grid_params[:page] = 1 if @grid_params[:page].nil?
       @grid_params[:page] = @grid_params[:page].to_i
       @grid_params[:order_dir] = 'ASC' if !['ASC', 'DESC'].include? @grid_params[:order_dir]
       @grid_params[:order_by] = nil if @records.first.nil? || !@records.first.attributes.keys.include?(@grid_params[:order_by])

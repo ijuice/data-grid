@@ -26,7 +26,7 @@ class GridIntegrationTest < ActionDispatch::IntegrationTest
   end
 
   test "pagination for page two" do
-    get "/dummy", params: {grid: {page: 1}}
+    get "/dummy", params: {grid: {page: 2}}
     assert_response :success
     assert_table_present
     assert_select 'div.pagination', 1
@@ -43,7 +43,7 @@ class GridIntegrationTest < ActionDispatch::IntegrationTest
   end
 
   test "pagination for page twenty" do
-    get "/dummy", params: {grid: {page: 19}}
+    get "/dummy", params: {grid: {page: 20}}
     assert_response :success
     assert_table_present
     assert_select 'div.pagination', 1
@@ -65,7 +65,7 @@ class GridIntegrationTest < ActionDispatch::IntegrationTest
   end
 
   test "pagination for last page" do
-    get "/dummy", params: {grid: {page: 39}}
+    get "/dummy", params: {grid: {page: 40}}
     assert_response :success
     assert_table_present
     assert_select 'div.pagination', 1
@@ -92,7 +92,7 @@ class GridIntegrationTest < ActionDispatch::IntegrationTest
   end
 
   test "order by id asc page two" do
-    get "/dummy", params: {grid: {order_by: 'id', order_dir: 'ASC', page: 1}}
+    get "/dummy", params: {grid: {order_by: 'id', order_dir: 'ASC', page: 2}}
     assert_response :success
     assert_table_present
     assert_select 'a.asc', 'Id'
