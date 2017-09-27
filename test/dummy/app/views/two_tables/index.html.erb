@@ -1,0 +1,30 @@
+<%=
+  @table_one.display(self) do |g|
+    g.column(name: 'Id', attribute: 'id') do |dummy|
+      dummy.id
+    end
+
+    g.column(name: 'Name', attribute: 'name') do |dummy|
+      dummy.name
+    end
+
+    g.column(name: 'Content', attribute: 'content') do |dummy|
+      dummy.content
+    end
+  end
+%>
+<%=
+  @table_two.display(self) do |g|
+    g.column(name: 'Id', attribute: 'id') do |dummy|
+      dummy.id
+    end
+
+    g.column(name: 'Name', attribute: 'name') do |dummy|
+      dummy.name
+    end
+
+    g.column(name: 'Content', attribute: 'content') do |dummy|
+      dummy.content
+    end
+  end
+%>

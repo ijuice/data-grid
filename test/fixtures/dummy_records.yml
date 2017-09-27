@@ -5,3 +5,11 @@ fix_<%= i %>:
   content: content_<%= i %>
   is_true: true
 <% end %>
+
+<% 1001.upto(2000) do |i| %>
+fix_<%= i %>:
+  id: <%= i %>
+  name: guy_<%= i %>
+  content: content_<%= i %>
+  is_true: false
+<% end %>

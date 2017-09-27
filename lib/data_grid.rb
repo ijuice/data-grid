@@ -2,13 +2,13 @@ require "data_grid/engine"
 
 module DataGrid
   class Base
-    attr_reader :context
+    attr_reader :context, :name
 
     def initialize(records, options)
       @records = records
       @all_records = records
       @name = 'grid'
-      @name = options[:name] + '_grid' if !options['name'].nil?
+      @name = options[:name] + '_grid' if !options[:name].nil?
       @pages_around = 2
       @pages_around = options[:pagination_pages_around] if !options[:pagination_pages_around].nil?
       initialize_params options

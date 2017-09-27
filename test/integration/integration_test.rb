@@ -73,6 +73,7 @@ class GridIntegrationTest < ActionDispatch::IntegrationTest
     assert_select 'a', { count: 1, text: '1' }
     assert_select 'a', { count: 1, text: '2' }
     assert_select 'a', { count: 0, text: '3' }
+    assert_select 'a', { count: 0, text: '37' }
     assert_select 'a', { count: 1, text: '38' }
     assert_select 'a', { count: 1, text: '39' }
     assert_select 'a', { count: 1, text: '40' }
