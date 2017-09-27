@@ -1,5 +1,9 @@
 <%=
   @datagrid.display(self) do |g|
+    g.column(name: 'Id', attribute: 'id') do |dummy|
+      dummy.id
+    end
+
     g.column(name: 'Name', attribute: 'name') do |dummy|
       dummy.name
     end

@@ -1,4 +1,7 @@
-one:
-  name: one
-  content: content
+<% 1.upto(1000) do |i| %>
+fix_<%= i %>:
+  id: <%= i %>
+  name: guy_<%= i %>
+  content: content_<%= i %>
   is_true: true
+<% end %>
