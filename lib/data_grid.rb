@@ -71,7 +71,7 @@ module DataGrid
     end
 
     def pagination
-      pages_total = (@all_records.except(:select).except(:order).count.to_f / @per_page).ceil
+      pages_total = (@all_records.length.to_f / @per_page).ceil
       view = ActionView::Base.new ActionController::Base.view_paths, {}
       view.render partial: 'data_grid/pagination.html.erb', locals: { page_last: pages_total, page: @page, data_grid: self, pages_around: @pages_around }
     end
@@ -81,11 +81,11 @@ module DataGrid
     end
 
     def entries_end
-      @offset + @records.except(:select).except(:order).count
+      @offset + @records.length
     end
 
     def entries_total
-      @all_records.except(:select).except(:order).count.to_s
+      @all_records.length
     end
 
     def pagination_page_link_to(text, page)
