@@ -13,7 +13,7 @@ class GridIntegrationTest < ActionDispatch::IntegrationTest
     get "/dummy"
     assert_response :success
     assert_table_present
-    assert_select 'div.pagination', 1
+    assert_select 'ul.pagination', 1
     assert_select 'a', { count: 0, text: '<' }
     assert_select 'a', { count: 1, text: '1' }
     assert_select 'a', { count: 1, text: '2' }
@@ -29,7 +29,7 @@ class GridIntegrationTest < ActionDispatch::IntegrationTest
     get "/dummy", params: {grid: {page: 2}}
     assert_response :success
     assert_table_present
-    assert_select 'div.pagination', 1
+    assert_select 'ul.pagination', 1
     assert_select 'a', { count: 1, text: '<' }
     assert_select 'a', { count: 1, text: '1' }
     assert_select 'a', { count: 1, text: '2' }
@@ -46,7 +46,7 @@ class GridIntegrationTest < ActionDispatch::IntegrationTest
     get "/dummy", params: {grid: {page: 20}}
     assert_response :success
     assert_table_present
-    assert_select 'div.pagination', 1
+    assert_select 'ul.pagination', 1
     assert_select 'a', { count: 1, text: '<' }
     assert_select 'a', { count: 1, text: '1' }
     assert_select 'a', { count: 1, text: '2' }
@@ -68,7 +68,7 @@ class GridIntegrationTest < ActionDispatch::IntegrationTest
     get "/dummy", params: {grid: {page: 40}}
     assert_response :success
     assert_table_present
-    assert_select 'div.pagination', 1
+    assert_select 'ul.pagination', 1
     assert_select 'a', { count: 1, text: '<' }
     assert_select 'a', { count: 1, text: '1' }
     assert_select 'a', { count: 1, text: '2' }

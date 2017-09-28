@@ -11,11 +11,9 @@ test:
   before_script:
     - docker info
   after_script:
-    - docker-compose down
     - sudo chown -R gitlab-runner:gitlab-runner .
   script:
-    - docker-compose up -d
-    - docker-compose exec -T web rails test
+    - docker-compose run -T web rails test
   except:
     - schedules
 

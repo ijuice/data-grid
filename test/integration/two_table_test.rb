@@ -17,7 +17,7 @@ class TwoTablesTest < ActionDispatch::IntegrationTest
   end
 
   def assert_pagination_first_page
-    assert_select 'div.pagination', 1
+    assert_select 'ul.pagination', 1
     assert_select 'a', { count: 0, text: '<' }
     assert_select 'a', { count: 1, text: '1' }
     assert_select 'a', { count: 1, text: '2' }
@@ -30,7 +30,7 @@ class TwoTablesTest < ActionDispatch::IntegrationTest
   end
 
   def assert_pagination_second_page
-    assert_select 'div.pagination', 1
+    assert_select 'ul.pagination', 1
     assert_select 'a', { count: 1, text: '<' }
     assert_select 'a', { count: 1, text: '1' }
     assert_select 'a', { count: 1, text: '2' }
@@ -44,7 +44,7 @@ class TwoTablesTest < ActionDispatch::IntegrationTest
   end
 
   def assert_pagination_last_page
-    assert_select 'div.pagination', 1
+    assert_select 'ul.pagination', 1
     assert_select 'a', { count: 1, text: '<' }
     assert_select 'a', { count: 1, text: '1' }
     assert_select 'a', { count: 1, text: '2' }
@@ -57,7 +57,7 @@ class TwoTablesTest < ActionDispatch::IntegrationTest
   end
 
   def assert_pagination_page_twenty
-    assert_select 'div.pagination', 1
+    assert_select 'ul.pagination', 1
     assert_select 'a', { count: 1, text: '<' }
     assert_select 'a', { count: 1, text: '1' }
     assert_select 'a', { count: 1, text: '2' }
