@@ -26,6 +26,7 @@ deploy_github:
       git remote add github git@github.com:ijuice/data-grid.git
       git checkout master
       git push github master --tags
+      git remote rm github
   environment:
     name: github
     url: https://github.com/ijuice/data-grid
