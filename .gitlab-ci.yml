@@ -25,6 +25,7 @@ deploy_github:
       ssh-add <(echo "$SSH_KEY_MOWGLI" | base64 --decode)
       git remote add github git@github.com:ijuice/data-grid.git
       git checkout master
+      git push github master
       git push github master --tags
       git remote rm github
   environment:
